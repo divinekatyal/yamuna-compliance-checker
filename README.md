@@ -13,9 +13,9 @@ It processes geographic monitoring stations (from Yamunotri down to Etawah), cal
 * The tool automatically generates a `compliance_log.csv` isolating all violating stations for quick executive review.
 
 ## Tech Stack
-Language: Python
-Data Processing:Pandas
-Visualization:Matplotlib
+Language: Python  
+Data Processing: Pandas  
+Visualization: Matplotlib  
 
 # About
 Developed as an applied engineering project, bridging the gap between chemical process calculations and Python-driven data analysis.
