@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-
+# Benchmark: 3.0 mg/L (CPCB bathing-class criterion), applied to all stations
 LIMIT = 3.0  
 
 os.makedirs("output", exist_ok=True)
@@ -10,14 +10,14 @@ def load_and_check(filepath):
     
     df = pd.read_csv(filepath)
     
-    
-    df["avg_bod"] = (df["min_bod"] + df["max_bod"]) / 2.0
-    
-    
-    df["status"] = df["avg_bod"].apply(lambda x: "FAIL" if x > LIMIT else "PASS")
+ # NOTE: dataset has only annual min and max, so this is the midpoint of the range, not a true mean
+    df["bod_mid"] = (df["min_bod"] + df["max_bod"]) / 2.0
     
     
-    df["exceedance"] = (df["avg_bod"] / LIMIT).round(1)
+    df["status"] = df["bod_mid"].apply(lambda x: "FAIL" if x > LIMIT else "PASS")
+    
+    
+    df["exceedance"] = (df["bod_mid"] / LIMIT).round(1)
     
     
     failed_stations = df[df["status"] == "FAIL"].sort_values(by="exceedance", ascending=False)
@@ -35,13 +35,13 @@ def show_report(df):
         
         for idx, row in data.iterrows():
             if row['status'] == "FAIL":
-                print(f"{row['station']:20s} | {row['avg_bod']:>4.1f} mg/L | FAIL ({row['exceedance']}x limit)")
+                print(f"{row['station']:20s} | {row['bod_mid']:>4.1f} mg/L | FAIL ({row['exceedance']}x limit)")
             else:
-                print(f"{row['station']:20s} | {row['avg_bod']:>4.1f} mg/L | PASS")
+                print(f"{row['station']:20s} | {row['bod_mid']:>4.1f} mg/L | PASS")
 
 def plot_trend(df):
     
-    pivot_df = df.pivot(index="station", columns="year", values="avg_bod")
+    pivot_df = df.pivot(index="station", columns="year", values="bod_mid")
     
     
     order = df["station"].unique()
@@ -51,11 +51,11 @@ def plot_trend(df):
     ax = pivot_df.plot(kind="bar", figsize=(10, 6), color=["#1f77b4", "#d62728"])
     
     
-    plt.axhline(y=LIMIT, color="red", linestyle="--", linewidth=2, label=f"Safe Limit ({LIMIT} mg/L)")
+    plt.axhline(y=LIMIT, color="red", linestyle="--", linewidth=2, label=f"Benchmark ({LIMIT} mg/L)")
     
-    plt.title("Yamuna River BOD: 2024 vs 2025")
+    plt.title("Yamuna River BOD (mid-range of annual min–max): 2024 vs 2025")
     plt.xlabel("Stations (Upstream to Downstream)")
-    plt.ylabel("Average BOD (mg/L)")
+    plt.ylabel("Mid-range BOD (mg/L)")
     plt.xticks(rotation=45, ha="right")
     plt.legend()
     plt.tight_layout()
