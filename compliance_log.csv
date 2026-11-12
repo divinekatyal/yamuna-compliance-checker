@@ -1,0 +1,16 @@
+year,station,min_bod,max_bod,bod_mid,status,exceedance
+2024,Delhi (ITO),20.0,66.0,43.0,FAIL,14.3
+2024,Delhi (Okhla),25.0,60.0,42.5,FAIL,14.2
+2024,Delhi (Nizamuddin),21.0,53.0,37.0,FAIL,12.3
+2025,Delhi (ITO),4.0,70.0,37.0,FAIL,12.3
+2024,Delhi (ISBT),11.0,51.0,31.0,FAIL,10.3
+2025,Delhi (Nizamuddin),7.2,52.0,29.6,FAIL,9.9
+2025,Delhi (Okhla),7.0,50.0,28.5,FAIL,9.5
+2025,Delhi (ISBT),1.0,46.0,23.5,FAIL,7.8
+2024,Etawah,9.6,16.8,13.2,FAIL,4.4
+2025,Etawah,6.8,16.8,11.8,FAIL,3.9
+2025,Mathura U/S,9.0,14.4,11.7,FAIL,3.9
+2024,Mathura U/S,8.4,12.4,10.4,FAIL,3.5
+2025,Agra D/S,7.6,12.8,10.2,FAIL,3.4
+2024,Agra D/S,7.2,11.2,9.2,FAIL,3.1
+2025,Delhi (Palla),1.5,6.0,3.75,FAIL,1.2
