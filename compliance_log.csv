@@ -1,4 +1,4 @@
-year,station,min_bod,max_bod,bod_mid,status,exceedance
+year,station,min_bod,max_bod,avg_bod,status,exceedance
 2024,Delhi (ITO),20.0,66.0,43.0,FAIL,14.3
 2024,Delhi (Okhla),25.0,60.0,42.5,FAIL,14.2
 2024,Delhi (Nizamuddin),21.0,53.0,37.0,FAIL,12.3
