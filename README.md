@@ -12,11 +12,16 @@ It processes geographic monitoring stations (from Yamunotri down to Etawah), cal
 - Central Delhi stations show mid-range BOD of about 23.5 to 43.0 mg/L, up to about 14x the benchmark.
 - Mathura, Agra and Etawah are lower than Delhi but still about 3 to 4x the benchmark.
 - The tool automatically generates a compliance_log.csv isolating all stations above the benchmark for quick review.
+  
+  ## Notes and Limitations
+- Results use the midpoint of each station's annual minimum and maximum, not a true mean. A station can pass on its midpoint while its peak readings exceed 3.0 mg/L.
+- One benchmark (3.0 mg/L, CPCB's Class B outdoor bathing criterion) is applied to all stations.
+- 10 of the 33 stations in the CPCB Yamuna tables are analysed.
 
 ## Tech Stack
 Language: Python  
 Data Processing: Pandas  
 Visualization: Matplotlib  
 
-# About
+## About
 Developed as an applied engineering project, bridging the gap between chemical process calculations and Python-driven data analysis.
